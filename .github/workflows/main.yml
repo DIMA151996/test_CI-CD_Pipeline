@@ -12,7 +12,7 @@ on:
       - master 
  
 jobs:
-  ci_part:
+  ci_cd:
     runs-on: ubuntu-latest
     
     steps:
@@ -20,6 +20,9 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: true
+          
+      - name: Build the Docker image
+        run: docker build -t site:v1 -f Dockerfile .
         
       - name: Generate deployment package
         run: zip -r ${{ env.EB_DEPLOY_PACKAGE_NAME }} ./ -x *.git*
@@ -48,7 +51,7 @@ jobs:
            --source-bundle S3Bucket="${{ env.EB_PACKEGE_S3_BUCKET_NAME }}",S3Key="${{ env.EB_DEPLOY_PACKAGE_NAME }}" \
            --version-label "Ver-${{ github.sha }}" \
            --description "CommitSHA-${{ github.sha }}"
-           
+                   
       - name: Deploy Beanstalk App
         run: aws elasticbeanstalk update-environment --environment-name ${{ env.EB_ENVIROMENT_NAME }} --version-label "Ver-${{ github.sha }}"
           
