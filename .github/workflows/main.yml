@@ -1,0 +1,24 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI/CD_Pipeline_AWS
+env:
+  EB_PACKEGE_S3_BUCKET_NAME : "cicd.pipeline"
+  EB_APLICATION_NAME        : "ci.cd_beanstalk"
+  EB_ENVIROMENT_NAME        : "ci.cd_beanstalk-env"
+  DEPLOY_PACKAGE_NAME       : "ci/cd_${{ github.sha}}.zip"
+  AWS_REGION_NAME           : "eu-central-1"
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  ci_part:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - run: zip -r ${{env.DEPLOY_PACKAGE_NAME}} ./ -x *.git*
+     
