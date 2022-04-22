@@ -3,7 +3,6 @@ env:
   EB_PACKEGE_S3_BUCKET_NAME : "cicd.pipeline"
   EB_APLICATION_NAME        : "ci.cd_beanstalk"
   EB_ENVIROMENT_NAME        : "ci.cd_beanstalk-env"
-  DEPLOY_PACKAGE_NAME       : "ci/cd_${{ github.sha }}.zip"
   AWS_REGION_NAME           : "eu-central-1"
 
 on:
@@ -11,7 +10,6 @@ on:
     branches: 
       - master 
  
-
 jobs:
   ci_part:
     runs-on: ubuntu-latest
@@ -33,6 +31,6 @@ jobs:
           aws-region             : ${{ env.AWS_REGION_NAME }}
           
       - name: Copy to S3
-        run: aws s3 cp ./ s3://${{ env.EB_PACKEGE_S3_BUCKET_NAME }}/
+        run: aws s3 cp ./ s3://deploy.zip/
    
      
