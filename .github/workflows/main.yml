@@ -5,7 +5,7 @@ env:
   EB_PACKEGE_S3_BUCKET_NAME : "cicd.pipeline"
   EB_APLICATION_NAME        : "ci.cd_beanstalk"
   EB_ENVIROMENT_NAME        : "ci.cd_beanstalk-env"
-  DEPLOY_PACKAGE_NAME       : "ci/cd_${{ github.sha}}.zip"
+  DEPLOY_PACKAGE_NAME       : "ci/cd_${{ github.sha }}.zip"
   AWS_REGION_NAME           : "eu-central-1"
 
 on:
