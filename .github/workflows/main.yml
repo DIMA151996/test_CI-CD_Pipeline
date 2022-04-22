@@ -34,11 +34,6 @@ jobs:
       - name: Copy to S3
         run: aws s3 cp ${{ env.EB_DEPLOY_PACKAGE_NAME }} s3://${{ env.EB_PACKEGE_S3_BUCKET_NAME }}/
         
-  cd_part:
-    runs-on: ubuntu-latest
-    needs: [ci_part]
-    
-    steps:
       - name: Config AWS credentials 
         uses: aws-actions/configure-aws-credentials@v1
         with:
