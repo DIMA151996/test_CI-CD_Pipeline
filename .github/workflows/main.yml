@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI/CD_Pipeline_AWS
 env:
   EB_PACKEGE_S3_BUCKET_NAME : "cicd.pipeline"
@@ -21,6 +19,20 @@ jobs:
     steps:
       - name: GIT clone repo
         uses: actions/checkout@v3
-      
+        with:
+          submodules: true
+        
+      - name: Generate deployment package
+        run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} . -x '*.git*'
+        
+      - name: Config AWS credentials 
+        uses: aws-actions/congigure-aws-credentials@v1
+        with:
+          aws-access-key-id      : ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key  : ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region             : ${{ env.AWS_REGION_NAME }}
+          
+      - name: Copy to S3
+        run: aws s3 cp ./ s3://${{ env.EB_PACKEGE_S3_BUCKET_NAME }}/
    
      
