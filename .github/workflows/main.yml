@@ -22,7 +22,7 @@ jobs:
           submodules: true
         
       - name: Generate deployment package
-        run: zip -r ${{ env.EB_DEPLOY_PACKAGE_NAME }} ./ -x '*.git*'
+        run: zip -r ${{ env.EB_DEPLOY_PACKAGE_NAME }} ./ -x *.git*
         
       - name: Config AWS credentials 
         uses: aws-actions/configure-aws-credentials@v1
