@@ -3,6 +3,7 @@ env:
   EB_PACKEGE_S3_BUCKET_NAME : "cicd.pipeline"
   EB_APLICATION_NAME        : "ci.cd_beanstalk"
   EB_ENVIROMENT_NAME        : "ci.cd_beanstalk-env"
+  EB_DEPLOY_PACKAGE_NAME    : "deploy.zip"
   AWS_REGION_NAME           : "eu-central-1"
 
 on:
@@ -21,7 +22,7 @@ jobs:
           submodules: true
         
       - name: Generate deployment package
-        run: zip -r deploy.zip ./ -x '*.git*'
+        run: zip -r ${{ env.EB_DEPLOY_PACKAGE_NAME }} ./ -x '*.git*'
         
       - name: Config AWS credentials 
         uses: aws-actions/configure-aws-credentials@v1
@@ -31,6 +32,6 @@ jobs:
           aws-region             : ${{ env.AWS_REGION_NAME }}
           
       - name: Copy to S3
-        run: aws s3 cp ./ s3://deploy.zip/
+        run: aws s3 cp ${{ env.EB_DEPLOY_PACKAGE_NAME }} s3://${{ env.EB_PACKEGE_S3_BUCKET_NAME }}/
    
      
