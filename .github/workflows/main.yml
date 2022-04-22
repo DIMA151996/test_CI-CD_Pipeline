@@ -10,9 +10,9 @@ env:
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches: 
+      - master 
+ 
 
 jobs:
   ci_part:
