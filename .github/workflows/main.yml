@@ -19,6 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
-      - run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
+      - name: GIT clone repo
+        uses: actions/checkout@v3
+      
+      - name: Create ZIP dep pkgs  
+        run: zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
      
