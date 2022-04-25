@@ -156,7 +156,7 @@ $(document).ready(function ()
             <p><em>Nam ornare condimentum tincidunt. Nulla at ante at sapien dignissim molestie. Cras dictum, nisi non hendrerit varius, magna felis pharetra nulla, eu condimentum quam mauris ac enim. </em></p>
             <p>Duis vehicula quam dictum neque dignissim ultricies viverra enim feugiat. Aliquam consectetur sollicitudin cursus. Nam interdum erat in mauris tempor convallis. Praesent eget nibh at lacus volutpat lobortis. Sed nec quam id risus luctus iaculis fringilla quis risus. Duis sit amet mollis quam.   Curabitur id arcu augue.  </p>
             <div class="cleaner h30"></div>
-            
+            //aasfasf
             <div id="gallery">
                     <ul>
                         <li class="float_l"><a href="#" title="Image 1"><img src="images/gallery/image_01_s.jpg" alt="Image 01" /></a></li>
