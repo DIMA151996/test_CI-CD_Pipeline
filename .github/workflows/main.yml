@@ -1,8 +1,8 @@
 name: CI/CD_Pipeline_AWS
 env:
   EB_PACKEGE_S3_BUCKET_NAME : "cicd.pipeline"
-  EB_APLICATION_NAME        : "gsgsf"
-  EB_ENVIROMENT_NAME        : "Gsgsf-env"
+  EB_APLICATION_NAME        : "test1"
+  EB_ENVIROMENT_NAME        : "Test1-env"
   EB_DEPLOY_PACKAGE_NAME    : "deploy.zip"
   AWS_REGION_NAME           : "eu-central-1"
 
